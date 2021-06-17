@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>إضافة موضوع جديد </title>
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+
+
+    <div class="container" style="margin-top: 1em;">
+        <div class="row">
+            <h1 style="font-size: 2em;margin-right: 5.8em;">إضافة موضوع جديد</h1>
+        </div>
+
+        <div class="card" id="center">
+            <div class="card-body">
+                <form [formGroup]="addCommunityForm" (ngSubmit)="addcommunity(addCommunityForm.value)" method="post">
+                    <div class="form-group">
+                        <label>عنوان الموضوع:</label>
+                        <input type="text" id="back" class="form-control" formControlName="Title"
+                            [class.is-invalid]="Title.invalid && Title.touched" />
+                        <div *ngIf="Title.errors && Title.touched">
+                            <small class="text-danger" *ngIf="Title.errors.required">Title is required</small>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label>التصنيف:</label>
+
+                        <select id="forum_name_select" fromControlerName="Subject"
+                            [class.is-invalid]="Subject.invalid && Subject.touched" class="form-control">
+                            <option value="showcase" *ngFor="let item of keys()">
+                                {{item}}
+                            </option>
+                        </select>
+                        <div *ngIf="Subject.invalid && Subject.touched" class="col-12">
+                            <small class="text-danger" *ngIf="Subject.errors.required">Subject is required</small>
+                        </div>
+                    </div>
+                    <input type="hidden" id="showcase_description"
+                        value="بامكانك عرض نماذج عن الأعمال التي قمت بتنفيذها هنا. يمنع اعادة عرض الخدمات المنشورة بالموقع!" />
+                    <input type="hidden" id="requests_description"
+                        value="هل تبحث عن خدمة غير موجودة في الموقع أو تحتاج لتفاصيل ومعلومات خاصة؟ هذا المكان المناسب." />
+                    <input type="hidden" id="stories_description"
+                        value="قسم مخصص لنشر تجاربك وأي نصائح لديك حول خمسات وكيف تحقق أكبر فائدة." />
+                    <input type="hidden" id="general_description"
+                        value="لنشر أي أمور أخرى متعلقة بموقع خمسات كالاقتراحات أو أي مشاكل واجهتك." />
+                    <br>
+                    <p id="forum_name_description" style="color: grey;" class="c-form__hb">بامكانك عرض نماذج عن الأعمال
+                        التي قمت بتنفيذها هنا. يمنع اعادة عرض الخدمات المنشورة بالموقع!</p>
+
+                    <br>
+                    <div class="form-group">
+                        <label>محتوى الموضوع:</label>
+                        <textarea name="content" id="back" formControlName="Content"
+                            [class.is-invalid]="Content.invalid && Content.touched" class="form-control" rows="5"
+                            clos="80" maxlength="10000"></textarea>
+                        <div *ngIf="Content.errors && Content.touched">
+                            <small class="text-danger" *ngIf="Content.errors.required">Content is required</small>
+                        </div>
+
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <p class="form-hb">
+                            <span>استخدم</span>&nbsp;
+                            <a href="https://suar.me" target="_blank" class="u-clr--primary">موقع صور</a>
+                            <span>عند حاجتك لرفع أو اضافة صورة لموضوعك.</span>
+                        </p>
+                    </div>
+                    <br>
+                    <div class="u-margin-bottom u-checkbox">
+                        <label for="confirm">
+                            <input name="confirm" id="confirm" type="checkbox" value="0" />&nbsp;
+                            <span>راجعت محتوى الموضوع بدقة وهو لا يخالف</span>&nbsp;
+                            <a href="/terms" target="_blank" class="u-clr--primary">شروط موقع خمسات</a>
+                        </label>
+                    </div>
+                    <br>
+                    <div class="u-margin-bottom u-checkbox">
+                        <label for="confirm2">
+                            <input name="confirm2" id="confirm2" type="checkbox" value="0" />&nbsp;
+                            <span id="forum_post_confirmation">راجعت محتوى الموضوع بدقة وهو لا يخالف</span>
+                        </label>
+                    </div>
+
+                    <div class="margin-bottom">
+                        <input type="hidden" id="showcase_confirmation"
+                            value="هذا الموضوع ليس إعادة عرض لخدمة أقدمها ولقد استأذنت المشترين قبل عرض أي من أعمالهم هنا" />
+                        <input type="hidden" id="requests_confirmation"
+                            value="بحثت عن الخدمات المعروضة في موقع خمسات قبل كتابة هذا الموضوع" />
+                        <input type="hidden" id="stories_confirmation"
+                            value="هذا الموضوع ذو فائدة ومتعلق بتجربتي لموقع خمسات" />
+                        <input type="hidden" id="general_confirmation"
+                            value="هذا الموضوع ذو فائدة ومتعلق بموقع خمسات" />
+
+                        <input id="user_token" type='hidden' name='token'
+                            value='b91fc0c6972e0f4597fb37a1fa9040a5eabbb530' />
+                        <br>
+                        <button type="submit" class="btn btn-success">نشر</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

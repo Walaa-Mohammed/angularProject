@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CDNs -->
+    <script
+      src="https://kit.fontawesome.com/9ebabaf617.js"
+      crossorigin="anonymous"
+    ></script>
+  <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+      integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+      crossorigin="anonymous"></script>
+
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"></script>
+
+      <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+      integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+      crossorigin="anonymous"
+    ></script>
+
+   </head>
+    <body class="body">
+      <app-hsoub-header></app-hsoub-header>
+<div style="margin-top:100px;">
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="container-xxl">
+        <div class="page">
+          <div class="container">
+            <div class="page-box row">
+              <div class="right col-lg-7">
+                <p class="title">إنشاء حساب جديد</p>
+
+                <div class="media row d-flex justify-content-center align-items-center">
+                  <div class="google col-lg-5 mt-4">
+                    <a class="btn d-flex justify-content-center align-items-center"> <i class="fab fa-google"></i> &nbsp; باستخدام جوجل </a>
+                  </div>
+                  <div class="col-sm-1"></div>
+                  <div class="microsoft col-lg-5 mt-4">
+                    <a class="btn d-flex justify-content-center align-items-center"> <i class="fab fa-windows"></i> &nbsp; باستخدام مايكروسوفت</a>
+                  </div>
+                </div>
+
+                <div class="lines row d-flex justify-content-center align-items-center">
+                  <span class="line-one col-5"></span>
+                  &nbsp; أو &nbsp;
+                  <span class="line-two col-5"></span>
+                </div>
+
+                <div class="form row">
+                  <div class="col-md-6 mt-5">
+                    <label for="firstName">الاسم <span class="star">*</span></label>
+                    <input type="text" formControlName="firstName" name="firstName"
+                    [class.is-invalid]="formFields.firstName?.invalid && formFields.firstName?.touched"
+                    class="form-control" placeholder="اكتب اسمك بالغة العربية" >
+
+                    <div *ngIf="formFields.firstName?.invalid && formFields.firstName?.touched">
+                      <small class="text-danger" *ngIf="formFields.firstName?.errors.required">هذا الاسم مطلوب</small>
+                  </div>
+                  </div>
+
+
+                  <div class="col-md-6 mt-5">
+                    <label for="lastName">اسم العائلة <span class="star">*</span></label>
+                    <input type="text" formControlName="lastName" name="lastName"
+                    [class.is-invalid]="formFields.lastName?.invalid && formFields.lastName?.touched"
+                     class="form-control" placeholder="اكتب اسم العائلة بالغة العربية" >
+
+                     <div *ngIf="formFields.lastName?.invalid && formFields.lastName?.touched">
+                      <small class="text-danger" *ngIf="formFields.lastName?.errors.required"> اسم العائلة مطلوب</small>
+                  </div>
+                  </div>
+
+
+                  <div class="col-md-12 mt-5">
+                    <label for="username"> اسم المستخدم <span class="star">*</span></label>
+                    <input type="text"  formControlName="username" name="username"
+                    class="form-control" placeholder="أدخل اسم المستخدم"
+                    [class.is-invalid]="formFields.username?.invalid && formFields.username?.touched">
+                    <div *ngIf="formFields.username?.invalid && formFields.username?.touched">
+                        <small class="text-danger" *ngIf="formFields.username?.errors.required">كلمة المرور مطلوبة</small>
+                    </div>
+                  </div>
+
+                  <div class="col-md-12 mt-5">
+                    <label for="email">البريد الالكتروني <span class="star">*</span></label>
+                    <input type="email" formControlName="email" name="email"
+                     [class.is-invalid]="formFields.email?.invalid && formFields.email?.touched"
+                    class="form-control" placeholder="أدخل البريد الإلكتروني الخاص بك" >
+
+                    <div *ngIf="formFields.email?.invalid && formFields.email?.touched">
+                      <small class="text-danger" *ngIf="formFields.email?.errors.required">
+                       البريد الالكتروني مطلوب</small>
+                  </div>
+
+
+                  </div>
+
+                  <div class="col-md-12 mt-5">
+                    <label for="password">كلمة المرور <span class="star">*</span></label>
+                    <input type="password"  formControlName="password" name="password"
+                    class="form-control" placeholder="أدخل كلمة المرور الخاصة بك"
+                    [class.is-invalid]="formFields.password?.invalid && formFields.password?.touched">
+                    <div *ngIf="formFields.password?.invalid && formFields.password?.touched">
+                        <small class="text-danger" *ngIf="formFields.password?.errors.required">كلمة المرور مطلوبة</small>
+                    </div>
+                  </div>
+
+                  <div class="col-md-12 mt-5">
+                    <input type="checkbox">
+                    <span>قرأت وأوافق على  <a href="#" class="text-decoration-none">شروط الاستخدام  </a> و
+                      <a href="#" class="text-decoration-none">سياسية الخصوصية. </a></span>
+                  </div>
+
+                  <button class="col-sm-4 btn btn-info mt-5 mr-3"
+                  [disabled]="loading">
+                  <span *ngIf="loading"
+                   class="spinner-border spinner-border-sm mr-1"></span>
+
+                   تسجيل</button>
+
+                </div>
+
+              </div>
+
+              <div class="left col-lg-5">
+                <p class="title">حساب واحد لجميع منتجاتنا</p>
+                <ul>
+                  <li class="row mt-4">
+                    <div class="photos photo-1 col-2 d-flex justify-content-center align-items-center">
+                      <img class="img-fluid" src="./assets/images/logo-white.png" width="80%">
+                    </div>
+                    <div class="text col-10">
+                      <h5>أنا</h5>
+                      <p>ركز على أهدافك وتابع ما يهمك حقاً</p>
+                    </div>
+                  </li>
+
+                  <li class="row mt-4">
+                    <div class="photos photo-2 col-2 d-flex justify-content-center align-items-center">
+                      <img class="img-fluid" src="./assets/images/logo-mobile.png" width="80%">
+                    </div>
+                    <div class="text col-10">
+                      <h5>مستقل</h5>
+                      <p>منصّة العمل الحر العربية</p>
+                    </div>
+                  </li>
+
+                  <li class="row mt-4">
+                    <div class="photos photo-3 col-2 d-flex justify-content-center align-items-center">
+                      <img class="img-fluid" src="./assets/images/logo-mobile-215fffeb86f5121a190d2551c62feea201ca1b4e0d5ea7feef9f5aa04a55dac4.png" width="50%">
+                    </div>
+                    <div class="text col-10">
+                      <h5>خمسات</h5>
+                      <p>سوق بيع وشراء الخدمات المصغّرة</p>
+                    </div>
+                  </li>
+
+                  <li class="row mt-4">
+                    <div class="photos photo-4 col-2 d-flex justify-content-center align-items-center">
+                      <img class="img-fluid" src="./assets/images/logo-b3eed.png" width="80%">
+                    </div>
+                    <div class="text col-10">
+                      <h5>بعيد</h5>
+                      <p>وظّف عن بعد</p>
+                    </div>
+                  </li>
+
+                  <li class="row mt-4">
+                    <div class="photos photo-5 col-2 d-flex justify-content-center align-items-center">
+                      <img class="img-fluid" src="./assets/images/SiteLogo-346x108.png.dd3bdd5dfa0e4a7099ebc51f8484032e.png" width="80%">
+                    </div>
+                    <div class="text col-10">
+                      <h5>أكاديمية حسوب</h5>
+                      <p>تعلّم وطوّر مهاراتك</p>
+                    </div>
+                  </li>
+
+                  <li class="row mt-4">
+                    <div class="photos photo-6 col-2 d-flex justify-content-center align-items-center">
+                      <img class="img-fluid" src="./assets/images/wiki-logo-white.svg" width="80%">
+                    </div>
+                    <div class="text col-10">
+                      <h5>موسوعة حسوب</h5>
+                      <p>مرجع المطورين العرب</p>
+                    </div>
+                  </li>
+
+                  <li class="row mt-4">
+                    <div class="photos photo-7 col-2 d-flex justify-content-center align-items-center">
+                      <img class="img-fluid" src="./assets/images/ads-logo.PNG" width="80%">
+                    </div>
+                    <div class="text col-10">
+                      <h5>إعلانات حسوب</h5>
+                      <p>أعلن على الإنترنت في العالم العربي</p>
+                    </div>
+                  </li>
+
+                  <li class="row mt-4">
+                    <div class="photos photo-8 col-2 d-flex justify-content-center align-items-center">
+                      <img class="img-fluid" src="./assets/images/hsoubio-7be1436dbdc3178e0b633054376febb439f77ea238f24dbbcfdce90353d0dc2e.png" width="80%">
+                    </div>
+                    <div class="text col-10">
+                      <h5>حسوب I/O</h5>
+                      <p>ناقش أشخاصًا بنفس اهتماماتك</p>
+                    </div>
+                  </li>
+
+                  <li class="row mt-4">
+                    <div class="photos photo-9 col-2 d-flex justify-content-center align-items-center">
+                      <img class="img-fluid" src="./assets/images/suar-logo.PNG" width="80%">
+                    </div>
+                    <div class="text col-10">
+                      <h5>صور</h5>
+                      <p>استمتع بأجمل الصور على الإنترنت</p>
+                    </div>
+                  </li>
+
+                </ul>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+
+      </form>
+    </div>
+    </body>
+</html>
+
+

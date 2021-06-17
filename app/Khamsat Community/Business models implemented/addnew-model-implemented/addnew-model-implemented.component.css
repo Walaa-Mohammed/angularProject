@@ -1,0 +1,62 @@
+
+      .hsoub-container {
+        overflow: hidden;
+    }
+    .vertical-center {
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+      }
+    html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, field set, form, label, legend, table, caption, tbody, toot, thead, tr, th, td {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        outline: 0;
+        font-size: 100%;
+        vertical-align: baseline;
+        background: transparent;
+    }
+    * {
+        box-sizing: border-box;
+    }
+    user agent stylesheet
+    div {
+        display: block;
+    }
+    body {
+        direction: rtl;
+        background: #F1F1F1;
+        font-family: "Noto Naskh Arabic", "Open Sans", serif;
+        font-size: 16px;
+        color: #222222;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        overflow-x: hidden;
+        line-height: 1.5em;
+    }
+    body {
+        line-height: 1;
+    }
+    #center {
+      margin: auto;
+      width: 70%;
+      padding: 10px;
+      margin-top: 2em;
+      text-align: right;
+    }
+    a{
+        color: rgb(70, 163, 70);
+    }
+    label{
+        padding: 2px;
+        margin: 4px;
+    }
+    #back{
+        background-color: rgb(247, 247, 247);
+    }
+    #back:focus{
+        background-color: white;
+    }
+    
